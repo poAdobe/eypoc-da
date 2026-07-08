@@ -1,0 +1,129 @@
+.table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.nested-columns .table-wrapper {
+  width: unset;
+}
+
+.table.block[data-block-name="table"] {
+  width: 100%;
+}
+
+.table.block[data-block-name="table"] table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+  font-family: inherit;
+  font-size: 14px;
+  line-height: 1.5;
+  color: inherit;
+}
+
+.table.block[data-block-name="table"] thead th,
+.table.block[data-block-name="table"] tbody td {
+  border: 1px solid #747480;
+  padding: 12px 16px;
+  vertical-align: middle;
+  background: transparent;
+  word-break: normal;
+  overflow-wrap: anywhere;
+  color: #DEDEE2;
+}
+
+.table.th-gray.block[data-block-name="table"] thead th {
+  background: #747480;
+  font-size: 16px;
+  font-weight: 700;
+  text-align: left;
+}
+
+.table.th-yellow.block[data-block-name="table"] thead th {
+  background: var(--yellow);
+  color: #141414;
+  font-size: 16px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.table.block[data-block-name="table"] th p,
+.table.block[data-block-name="table"] td p {
+  margin: 0;
+}
+
+.table.block[data-block-name="table"] tbody td[data-align="center"],
+.table.block[data-block-name="table"] tbody td[style*="text-align: center"] {
+  text-align: center;
+}
+
+.table.block[data-block-name="table"] thead th[style*="vertical-align: middle"],
+.table.block[data-block-name="table"] tbody td[style*="vertical-align: middle"] {
+  vertical-align: middle;
+}
+
+.table.th-gray.block[data-block-name="table"] tr {
+  border-bottom: #747480;
+}
+
+.table.th-gray.block[data-block-name="table"] thead th,
+.table.th-gray.block[data-block-name="table"] tbody td {
+  border: none;
+}
+
+.table.block[data-block-name="table"] tbody tr:nth-child(even) {
+  background: transparent;
+}
+
+.table.block[data-block-name="table"] tbody tr:nth-child(odd) {
+  background: transparent;
+}
+
+.table.block[data-block-name="table"] tbody tr.em-row td {
+  background: var(--yellow);
+}
+
+.table.block[data-block-name="table"] tbody tr.em-row td p em{
+  color: #000;
+  font-weight: 700;
+  font-size: 14px;
+  font-style: normal;
+}
+
+/* th-gray: indicator-row — spacer td + content td pushed to the right */
+.table.th-gray.block[data-block-name="table"] tbody tr.indicator-row td:first-child {
+  /* border: none; */
+  background: transparent;
+  padding: 0;
+}
+
+.table.th-gray.block[data-block-name="table"] tbody tr.indicator-row td:last-child {
+  background: transparent;
+  border: none;
+  vertical-align: middle;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 16px 32px;
+  padding: 12px 16px;
+  width: auto;
+}
+
+.table.th-gray.block[data-block-name="table"] tbody tr.indicator-row td:last-child p {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+  white-space: nowrap;
+}
+
+.table.th-gray.block[data-block-name="table"] tbody tr.indicator-row td:last-child p::before {
+  content: '';
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  min-width: 12px;
+  background-color: var(--yellow, #ffe600);
+  flex-shrink: 0;
+}
