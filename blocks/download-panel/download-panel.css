@@ -1,0 +1,175 @@
+.section.download-panel-container {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  background: #050507;
+}
+
+.section.download-panel-container::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background:
+    radial-gradient(ellipse at 72% 86%, rgb(255 230 0 / 60%) 0%, rgb(255 230 0 / 0%) 32%),
+    radial-gradient(ellipse at 84% 92%, rgb(255 0 84 / 42%) 0%, rgb(255 0 84 / 0%) 40%),
+    radial-gradient(ellipse at 96% 86%, rgb(101 0 170 / 52%) 0%, rgb(101 0 170 / 0%) 44%);
+  pointer-events: none;
+}
+
+.section.download-panel-container > div {
+  position: relative;
+  z-index: 1;
+}
+
+.download-panel.block[data-block-name="download-panel"] {
+  position: relative;
+}
+
+.download-panel.block[data-block-name="download-panel"] .download-panel-shell {
+  position: relative;
+  border: 1px solid #747480;
+  background: linear-gradient(180deg, rgb(8 20 44 / 40%) 0%, rgb(8 20 44 / 40%) 100%);
+  padding: 16px;
+}
+
+.download-panel.block[data-block-name="download-panel"] .download-panel-header,
+.download-panel.block[data-block-name="download-panel"] .download-panel-content,
+.download-panel.block[data-block-name="download-panel"] .download-panel-footer {
+  position: relative;
+}
+
+.download-panel.block[data-block-name="download-panel"] .download-panel-header {
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--yellow);
+  height: auto;
+}
+
+.download-panel.block[data-block-name="download-panel"] .download-panel-header > * {
+  margin: 0;
+  color: #e8e8ea;
+  font-size: clamp(24px, 5vw, 32px);
+  line-height: 1.1;
+  font-weight: 300;
+}
+
+.download-panel.block[data-block-name="download-panel"] .download-panel-content {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.download-panel.block[data-block-name="download-panel"] .download-panel-copy {
+  max-width: 900px;
+}
+
+.download-panel.block[data-block-name="download-panel"] .download-panel-copy > * {
+  margin: 0;
+  color: #f0f0f2;
+  font-size: 14px;
+  line-height: 1.65;
+}
+
+.download-panel.block[data-block-name="download-panel"] .download-panel-copy a:any-link {
+  color: #f0f0f2;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.download-panel.block[data-block-name="download-panel"] .download-panel-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: end;
+  width: 100%;
+}
+
+.download-panel.block[data-block-name="download-panel"] .download-panel-action-link:any-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 16px;
+  min-height: 40px;
+  border: 1px solid #7d7f8b;
+  padding: 0 8px;
+  color: #f5f6fa;
+  background: rgb(10 10 14 / 65%);
+  text-decoration: none;
+  white-space: normal;
+  justify-content: flex-start;
+  transition: border-color 0.2s ease, color 0.2s ease, background-color 0.2s ease;
+}
+
+.download-panel.block[data-block-name="download-panel"] .download-panel-action-link::before {
+  content: '';
+  width: 24px;
+  height: 24px;
+  background: center / contain no-repeat url('/icons/pdf-icon.svg');
+  flex: 0 0 16px;
+}
+
+.download-panel.block[data-block-name="download-panel"] .download-panel-action-link:hover,
+.download-panel.block[data-block-name="download-panel"] .download-panel-action-link:focus-visible {
+  border-color: var(--yellow);
+  color: #fff;
+  background: rgb(15 15 20 / 80%);
+  text-decoration: none;
+}
+
+.download-panel.block[data-block-name="download-panel"] .download-panel-action-link:hover::before,
+.download-panel.block[data-block-name="download-panel"] .download-panel-action-link:focus-visible::before {
+  background-image: url('/icons/down-hover-icon.svg');
+}
+
+.download-panel.block[data-block-name="download-panel"] .download-panel-footer {
+  margin-top: 22px;
+}
+
+.download-panel.block[data-block-name="download-panel"] .download-panel-footer > * {
+  margin: 0;
+}
+
+.download-panel.block[data-block-name="download-panel"] .download-panel-footer .icon {
+  width: 24px;
+  height: 24px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.download-panel.block[data-block-name="download-panel"] .download-panel-footer .icon img {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+}
+
+@media (width >= 900px) {
+  .download-panel.block[data-block-name="download-panel"] .download-panel-shell {
+    padding: 20px 22px 16px;
+  }
+
+  .download-panel.block[data-block-name="download-panel"] .download-panel-content {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 24px;
+  }
+
+  .download-panel.block[data-block-name="download-panel"] .download-panel-copy {
+    flex: 1 1 auto;
+    max-width: 72%;
+  }
+
+  .download-panel.block[data-block-name="download-panel"] .download-panel-actions {
+    flex: 0 0 auto;
+    align-items: stretch;
+    min-width: 210px;
+    margin-top: 10px;
+    width: auto;
+  }
+
+  .download-panel header {
+    height: auto;
+  }
+}

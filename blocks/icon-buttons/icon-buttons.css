@@ -1,0 +1,141 @@
+.section.icon-buttons-container > .icon-buttons-wrapper {
+  max-width: unset;
+  margin: auto;
+  padding: 0;
+}
+
+.icon-buttons {
+  --icon-buttons-item-size: clamp(200px, 70vw, 250px);
+
+  position: relative;
+  overflow: hidden;
+  min-height: 273px;
+}
+
+.icon-buttons .icon-buttons-media {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  line-height: 0;
+}
+
+.icon-buttons .icon-buttons-media picture,
+.icon-buttons .icon-buttons-media img {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.icon-buttons .icon-buttons-media img {
+  object-fit: cover;
+}
+
+.icon-buttons .icon-buttons-list {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 968.63px;
+  width: min(100%, var(--max-width-container));
+  max-width: var(--max-width-container);
+  margin: 0 auto;
+  isolation: isolate;
+}
+  
+.icon-buttons .icon-buttons-item {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: linear-gradient(180deg, rgb(8 20 44 / 40%) 0%, rgb(8 20 44 / 40%) 100%);
+  justify-content: center;
+  gap: 8px;
+  width: min(100%, var(--icon-buttons-item-size));
+  max-width: 320px;
+  max-height: 200px;
+  aspect-ratio: 1 / 1;
+  padding: 12px 10px;
+  color: #fff;
+  text-align: center;
+}
+
+.icon-buttons .icon-buttons-icon {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+  height: 80px;
+}
+
+.icon-buttons .icon-buttons-icon p {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+}
+
+.icon-buttons .icon-buttons-icon .icon,
+.icon-buttons .icon-buttons-icon img,
+.icon-buttons .icon-buttons-icon svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.icon-buttons .icon-buttons-label {
+  margin: 0;
+  color: #fff;
+  font-size: 24px;
+  line-height: 1.2;
+}
+
+.icon-buttons .icon-buttons-label > * {
+  margin: 0;
+}
+
+@media (width >= 600px) {
+  .icon-buttons .icon-buttons-media {
+    position: relative;
+    inset: auto;
+  }
+
+  .icon-buttons .icon-buttons-media picture,
+  .icon-buttons .icon-buttons-media img {
+    height: auto;
+  }
+
+  .icon-buttons .icon-buttons-media img {
+    min-height: 260px;
+  }
+
+  .icon-buttons .icon-buttons-list::before {
+    top: 0;
+    right: 75px;
+    left: 75px;
+    height: clamp(200px, 36%, 260px);
+  }
+
+  .icon-buttons .icon-buttons-list {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: min(100%, var(--max-width-container));
+    min-height: 100%;
+    flex-flow: row wrap;
+    align-items: flex-start;
+    justify-content: center;
+    transform: translateX(-50%);
+  }
+
+  .icon-buttons .icon-buttons-item {
+    flex: 1 1 0;
+  }
+
+  .icon-buttons .icon-buttons-icon {
+    display: flex;
+  }
+}
