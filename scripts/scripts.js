@@ -117,6 +117,89 @@ function decorateButtons(main) {
   });
 }
 
+function getAnchorTargetSection(icon) {
+  const anchor = icon.closest('a[href]');
+  if (!anchor) return null;
+
+  const href = anchor.getAttribute('href') || '';
+  if (!href.startsWith('#') || href.length < 2) return null;
+  return document.getElementById(decodeURIComponent(href.slice(1)));
+}
+
+function getAdjacentSectionTarget(icon) {
+  const section = icon.closest('main > .section, .section');
+  const main = section?.closest('main');
+  if (!section || !main) return null;
+
+  const sections = [...main.querySelectorAll(':scope > .section')];
+  const currentIndex = sections.indexOf(section);
+  if (currentIndex < 0) return null;
+
+  const direction = icon.classList.contains('icon-up-default-icon') ? -1 : 1;
+  const targetIndex = currentIndex + direction;
+  return sections[targetIndex] || null;
+}
+
+function getHeroSection(icon) {
+  const main = icon.closest('main') || document.querySelector('main');
+  if (!main) return null;
+
+  const heroBlock = main.querySelector('.hero');
+  return heroBlock?.closest('.section') || main.querySelector(':scope > .section');
+}
+
+function getScrollIconTarget(icon) {
+  const anchor = icon.closest('a[href]');
+  if (anchor) {
+    const href = anchor.getAttribute('href') || '';
+    if (!href.startsWith('#')) return null;
+  }
+
+  const anchorTarget = getAnchorTargetSection(icon);
+  if (anchorTarget) return anchorTarget;
+
+  if (icon.classList.contains('icon-up-default-icon')) {
+    return getHeroSection(icon) || getAdjacentSectionTarget(icon);
+  }
+
+  return getAdjacentSectionTarget(icon);
+}
+
+function setupScrollIconAccessibility(root) {
+  root.querySelectorAll('.icon-up-default-icon, .icon-down-default-icon').forEach((icon) => {
+    if (icon.closest('a[href], button, [role="button"]')) return;
+
+    const isUp = icon.classList.contains('icon-up-default-icon');
+    icon.setAttribute('role', 'button');
+    icon.tabIndex = 0;
+    icon.setAttribute('aria-label', isUp ? 'Scroll to previous section' : 'Scroll to next section');
+  });
+}
+
+function handleScrollIconActivate(event) {
+  const icon = event.target.closest('.icon-up-default-icon, .icon-down-default-icon');
+  if (!icon) return;
+
+  if (event.type === 'keydown' && event.key !== 'Enter' && event.key !== ' ') return;
+
+  const targetSection = getScrollIconTarget(icon);
+  if (!targetSection) return;
+
+  event.preventDefault();
+  scrollToTargetSection(targetSection);
+}
+
+function setupScrollIconAnchors(root = document) {
+  window.hlx = window.hlx || {};
+  if (!window.hlx.scrollIconAnchorsReady) {
+    document.addEventListener('click', handleScrollIconActivate);
+    document.addEventListener('keydown', handleScrollIconActivate);
+    window.hlx.scrollIconAnchorsReady = true;
+  }
+
+  setupScrollIconAccessibility(root);
+}
+
 /**
  * Decorates the main element.
  * @param {Element} main The main element
@@ -128,6 +211,7 @@ export function decorateMain(main) {
   decorateSections(main);
   decorateBlocks(main);
   decorateButtons(main);
+  setupScrollIconAnchors(main);
 }
 
 /**

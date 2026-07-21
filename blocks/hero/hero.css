@@ -105,7 +105,21 @@
   text-decoration: underline;
 }
 
-.hero .hero-cta:any-link {
+.hero .hero-cta:any-link:has(.icon-up-default-icon) {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  min-height: 42px;
+  font-size: 13px;
+  font-weight: 700;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.hero .hero-cta:any-link:not(:has(.icon-up-default-icon)) {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -124,8 +138,8 @@
   background: #0006; /* hex value for 40% opacity black color */
 }
 
-.hero .hero-cta:hover,
-.hero .hero-cta:focus-visible {
+.hero .hero-cta:not(:has(.icon-up-default-icon)):hover,
+.hero .hero-cta:not(:has(.icon-up-default-icon)):focus-visible {
   background-color: #fff;
   color: #111;
   text-decoration: none;
