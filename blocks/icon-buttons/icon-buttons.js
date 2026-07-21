@@ -15,11 +15,14 @@ export default function decorate(block) {
   const list = document.createElement('div');
   list.className = 'icon-buttons-list';
 
+  const iconSelector = ':scope > .icon, :scope > img, :scope > svg, :scope > p > .icon, :scope > p > img, :scope > p > svg';
+
   rows.forEach((row) => {
-    const [iconCell, labelCell] = [...row.children];
-    const iconContent = iconCell?.querySelector(':scope > .icon, :scope > img, :scope > svg, :scope > p > .icon, :scope > p > img, :scope > p > svg')
-      || iconCell?.firstElementChild
-      || iconCell;
+    const cells = [...row.children];
+    const iconCell = cells.find((cell) => cell.querySelector(iconSelector));
+    const labelCell = cells.find((cell) => cell !== iconCell);
+
+    const iconContent = iconCell?.querySelector(iconSelector);
     const labelMarkup = labelCell?.innerHTML?.trim();
     if (!iconContent && !labelMarkup) return;
 

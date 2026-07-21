@@ -161,14 +161,18 @@ pre {
   white-space: pre;
 }
 
-main > div.section[data-bg-color="light"] {
+main > .section:not(.hero-container) {
+  background-color: #1A1A24;
+  padding: 50px 0;
+}
+
+main > .section[data-section-bg="light"] {
   background-color: transparent;
   color: #131313;
 }
 
-main > div:not(.hero-container) {
+main > .section[data-section-bg="dark"] {
   background-color: #1A1A24;
-  padding: 50px 0;
 }
 
 input,
@@ -318,7 +322,7 @@ main img {
 .icon img {
   height: 100%;
   width: 100%;
-  object-fit: contain;
+  /* object-fit: contain; */
 }
 
 .icon-down-default-icon,
@@ -377,8 +381,7 @@ main > .section:first-of-type {
     padding: 0 32px;
   }
 
-  main > div:not(.hero-container) {
-    background-color: #1A1A24;
+  main > .section:not(.hero-container) {
     padding: var(--bg-section-gap) 0;
   }
 
@@ -447,11 +450,11 @@ main .section.highlight {
   border-radius: 2px;
 }
 
-main > div.section[data-bg-color="light"] .default-content-wrapper h2 > u {
+main > .section[data-section-bg="light"] .default-content-wrapper h2 > u {
   color: #131313;
 }
 
-main > div.section[data-bg-color="light"] .default-content-wrapper h2 > u::after {
+main > .section[data-section-bg="light"] .default-content-wrapper h2 > u::after {
   background: #747480;
 }
 

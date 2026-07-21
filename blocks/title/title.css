@@ -1,0 +1,37 @@
+.title {
+  text-align: left;
+  margin: 30px 0;
+}
+
+.title.center {
+  text-align: center;
+}
+
+.title.right,
+.title.end {
+  text-align: right;
+}
+
+.title > * {
+  margin: 0;
+  font-size: var(--title-font-size, inherit);
+}
+
+.title.underlined h2{
+  font-size: 28px;
+  font-weight: 600;
+  color: #eaeaea;
+  position: relative;
+  display: inline-block;
+}
+
+.title.underlined h2::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -20px;
+    width: 50%;
+    height: 4px;
+    background: var(--yellow);
+    border-radius: 2px; 
+}
